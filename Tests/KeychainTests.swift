@@ -63,28 +63,6 @@ class KeychainTests: XCTestCase {
 		try! deleteQuery.deleteItem()
 	}
 
-	func testPasswordObject() {
-		let newQuery = SAMKeychainQuery()
-		newQuery.service = testService
-		newQuery.account = testAccount
-
-		let dictionary: NSDictionary = [
-			"number": 42,
-			"string": "Hello World"
-		]
-
-		newQuery.passwordObject = dictionary
-		try! newQuery.save()
-
-		let lookupQuery = SAMKeychainQuery()
-		lookupQuery.service = testService
-		lookupQuery.account = testAccount
-		try! lookupQuery.fetch()
-
-		let readDictionary = lookupQuery.passwordObject as! NSDictionary
-		XCTAssertEqual(dictionary, readDictionary)
-	}
-
 	func testCreateWithMissingInformation() {
 		var query = SAMKeychainQuery()
 		query.service = testService
