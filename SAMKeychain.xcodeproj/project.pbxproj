@@ -147,7 +147,8 @@
 				21632D7E1C92599100C40D7D /* SAMKeychainQuery.h */,
 				21632D7F1C92599100C40D7D /* SAMKeychainQuery.m */,
 			);
-			path = Sources;
+			name = Sources;
+			path = Sources/SAMKeychain;
 			sourceTree = "<group>";
 		};
 		21632D861C9259B400C40D7D /* Support */ = {

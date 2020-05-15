@@ -147,7 +147,9 @@ class KeychainTests: XCTestCase {
 	}
 
 	func testUpdateAccessibilityType() {
+        #if !os(OSX)
 		SAMKeychain.setAccessibilityType(kSecAttrAccessibleWhenUnlockedThisDeviceOnly)
+        #endif
 
 		// Create a new item
 		SAMKeychain.setPassword(testPassword, forService: testService, account: testAccount)
@@ -158,7 +160,9 @@ class KeychainTests: XCTestCase {
 		// Check account
 		XCTAssertTrue(accounts(SAMKeychain.accounts(forService: testService), containsAccountWithName: testAccount))
 
+        #if !os(OSX)
 		SAMKeychain.setAccessibilityType(kSecAttrAccessibleAlwaysThisDeviceOnly)
+        #endif
 		SAMKeychain.setPassword(testPassword, forService: testService, account: testAccount)
 
 		// Check all accounts
